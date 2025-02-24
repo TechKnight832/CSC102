@@ -1,0 +1,94 @@
+<!--Giani Saldana 2/20/2025-->
+
+<!DOCTYPE html>
+<head lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSC102 Strings Page</title>
+    <style>
+        body {
+            background-color: #046b00;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            background-color: #583c00;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px #000000;
+        }
+        input[type="text"], button { 
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .message {
+            color: greenyellow;
+            margin-top: 10px;
+        }
+        .secret {
+            color: greenyellow;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- form for user input -->
+        <form id="userForm" onsubmit="processForm(event)">
+            <!-- input fields for user to enter first and last name -->
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <br>
+            <!-- Input field for zip code -->
+            <input type="text" id="zipCode" placeholder="Zip Code" required>
+            <br>
+            <!-- Submit button -->
+            <button type="submit">Submit</button> 
+        </form>
+        <!-- Div for displaying messages -->
+        <div id="message" class="message"></div>
+        <!-- Div for displaying secret message -->
+        <div id="secret" class="secret"></div>
+    </div>
+
+    <script>
+        // function to validate inputs and show the secret message
+        function processForm(event) {
+            // prevent the form from submission
+            event.preventDefault();
+
+            // get the values from the input fields
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const zipCode = document.getElementById("zipCode").value;
+
+            // combine the first and last name into a variable
+            const fullName = firstName + ' ' + lastName;
+
+            // check if the full name has more than 20 characters
+            if (fullName.length > 20) {
+                // Display warning message
+                document.getElementById("message").innerHTML = "Full name cannot be more than 20 characters!";
+                document.getElementById("secret").innerHTML = ' ';
+                return; // Do not continue if invalid
+            }
+
+            // check if zip code is valid (5 digits)
+            const zipCodePattern = /^[0-9]{5}$/;
+            if (!zipCodePattern.test(zipCode)) {
+                document.getElementById("message").innerHTML = "Please enter a valid 5-digit Zip code!";
+                document.getElementById("secret").innerHTML = ' ';
+                return; // Do not continue if invalid
+            }
+
+            // If inputs are valid, display the secret message
+            document.getElementById("secret").innerHTML
+            document.getElementById("message").innerHTML = 'Congranjulations! You have accessed the secret message!';
+        }
+    </script>
+</body>
+</html>
