@@ -1,0 +1,80 @@
+<!-- Giani Saldana -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Mover</title>
+    <style>
+        /* Basic styling for the buttons and page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #004a8b; /* Dark blue background */
+            text-align: center;
+            padding-top: 50px;
+        }
+        #Cmeme {
+            position: absolute;
+            width: 100px;
+            height: auto;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        #startButton {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        #stopButton {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Start button -->
+    <button id="startButton" onClick="start()">Start</button>
+
+    <!-- Stop button -->
+    <button id="stopButton" onClick="stop()" disabled>Stop</button>
+
+    <!-- Meme image -->
+    <img id="Cmeme" src="Cmeme.jpg" alt="Code meme">
+
+    <script>
+        // Variable to store the interval ID for moving the meme
+        let moveInterval;
+
+        // Function to move the meme image around the page
+        function moveMeme() {
+            const meme = document.getElementById('Cmeme'); // Get the meme image
+            const x = Math.floor(Math.random() * window.innerWidth);
+            const y = Math.floor(Math.random() * window.innerHeight);
+            meme.style.left = `${x}px`;
+            meme.style.top = `${y}px`;
+        }
+
+        // Function to enable the Start button and disable the Stop button
+        function start() {
+            document.getElementById('startButton').disabled = true;
+            document.getElementById('stopButton').disabled = false;
+            moveInterval = setInterval(moveMeme, 800); // Move meme every second
+        }
+
+        // Function to enable the Stop button and disable the Start button
+        function stop() {
+            document.getElementById('startButton').disabled = false;
+            document.getElementById('stopButton').disabled = true;
+            clearInterval(moveInterval);
+        }
+    </script>
+</body>
+</html>
