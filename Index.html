@@ -1,21 +1,39 @@
 <!-- Giani Saldana, 1/26/2025 -->
+<!-- DOCTYPE this is the first tag on the page and it tells the 
+ browser that this is an HTML5 page -->
  <!DOCTYPE html>
+ <!-- html tag this is the root element of the page -->
  <html>
+    <!-- the head section has info for the browser and search engine -->
     <head>
     	<title>CSC102 Home Page</title>
+        <link rel="stylesheet" href="webpage.css">
+        <script src="Music.js" defer></script>
     </head>
+
+    <!-- the body section contains the text and images we want to 
+     show the user -->
     <body>
         <header>
         <h1>Welcome to my CSC 102 Home Page</h1>
+        <!-- p is the paragraph tag; has spacing around it by default -->
         <nav>
             <a href="Index.html">Home</a>
             <br>
             <a href="Boards.html">Boards</a>
         </nav>
     </header>
-         
         <p>
+            <!-- img is the image tag -->
             <img id="memeImage" src="meme.jpeg">
         </p>
+
+        <!-- Adding buttons to play and stop music -->
+        <p>
+            <button id="playSound" style="background-color: green; color: white; padding: 10px 20px; border-radius: 5px; font-size: lem;">Play Music</button>
+            <button id="stopSound" style="background-color: red; color: white; padding: 10px 20px; border-radius: 5px; font-size: lem;">Stop Music</button>
+        </p>
     </body>
- </html>
+</html>
+
+
