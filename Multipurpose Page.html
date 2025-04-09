@@ -1,0 +1,186 @@
+<!-- Giani Saldana -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipurpose Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #004a8b, #046b00);
+            text-align: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgb(230, 149, 0);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px #000000;
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        h1 {
+            color: #464646;
+            font-size: 2.5em;
+            text-shadow: 2px 2px #000;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        #Cmeme {
+            position: absolute;
+            width: 100px;
+            height: auto;
+        }
+
+        #startButton {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #stopButton {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .message, .secret, #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- Section 1: Meme Mover -->
+    <div class="container">
+        <h1>Meme Mover</h1>
+        <button id="startButton" onclick="start()">Start</button>
+        <button id="stopButton" onclick="stop()" disabled>Stop</button>
+        <img id="Cmeme" src="Cmeme.jpg" alt="Code meme">
+    </div>
+
+    <!-- Section 2: Palindrome Checker -->
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <form id="palindromeForm">
+            <input type="text" id="userInput" placeholder="Enter a word or phrase" required>
+            <button type="submit">Check Palindrome</button>
+        </form>
+        <div id="result"></div>
+        <img src="drome_meme.jpeg" alt="Funny Drome Meme">
+    </div>
+
+    <!-- Section 3: CSC102 Strings Form -->
+    <div class="container">
+        <h1>Strings Form</h1>
+        <form id="userForm" onsubmit="processForm(event)">
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <br>
+            <input type="text" id="zipCode" placeholder="Zip Code" required>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="message" class="message"></div>
+        <div id="secret" class="secret"></div>
+    </div>
+
+    <script>
+        // Section 1: Meme Mover
+        let moveInterval;
+
+        function moveMeme() {
+            const meme = document.getElementById('Cmeme');
+            const x = Math.floor(Math.random() * window.innerWidth);
+            const y = Math.floor(Math.random() * window.innerHeight);
+            meme.style.left = `${x}px`;
+            meme.style.top = `${y}px`;
+        }
+
+        function start() {
+            document.getElementById('startButton').disabled = true;
+            document.getElementById('stopButton').disabled = false;
+            moveInterval = setInterval(moveMeme, 800);
+        }
+
+        function stop() {
+            document.getElementById('startButton').disabled = false;
+            document.getElementById('stopButton').disabled = true;
+            clearInterval(moveInterval);
+        }
+
+        // Section 2: Palindrome Checker
+        function cleanString(str) {
+            return str.replace(/\s+/g, '').toLowerCase();
+        }
+
+        function isPalindrome(str) {
+            const cleaned = cleanString(str);
+            const reversed = cleaned.split('').reverse().join('');
+            return cleaned === reversed;
+        }
+
+        document.getElementById('palindromeForm').onsubmit = function(e) {
+            e.preventDefault();
+
+            const userInput = document.getElementById('userInput').value;
+            const resultDiv = document.getElementById('result');
+
+            if (userInput.trim() === "") {
+                resultDiv.innerHTML = "Please enter a valid string!";
+                return;
+            }
+
+            if (isPalindrome(userInput)) {
+                resultDiv.innerHTML = `<span style="color: green;">"${userInput}" is a palindrome! 🎉</span>`;
+            } else {
+                resultDiv.innerHTML = `<span style="color: red;">"${userInput}" is NOT a palindrome. ❌</span>`;
+            }
+
+            document.getElementById('userInput').value = "";
+        };
+
+        // Section 3: CSC102 Strings Form
+        function processForm(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const zipCode = document.getElementById("zipCode").value;
+            const fullName = firstName + ' ' + lastName;
+
+            if (fullName.length > 20) {
+                document.getElementById("message").innerHTML = "Full name cannot be more than 20 characters!";
+                document.getElementById("secret").innerHTML = '';
+                return;
+            }
+
+            const zipCodePattern = /^[0-9]{5}$/;
+            if (!zipCodePattern.test(zipCode)) {
+                document.getElementById("message").innerHTML = "Please enter a valid 5-digit Zip code!";
+                document.getElementById("secret").innerHTML = '';
+                return;
+            }
+
+            document.getElementById("message").innerHTML = 'Congratulations! You have accessed the secret message!';
+        }
+    </script>
+</body>
+</html>
