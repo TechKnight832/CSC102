@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useful Information Table</title>
+    <style>
+        body {
+            background-color: purple;
+            color: #006933;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: pink; /* White background for table for readability */
+        }
+        th, td {
+            border: 1px solid #000000; /* Dark green borders */
+            padding: 10px;
+            text-align: center;
+            color: #006330; /* Dark green text */
+        }
+        th {
+            background-color: whitesmoke; /* Slightly lighter purple for headers */
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: yellow; /* Subtle contrast for even rows */
+        }
+        tr:hover {
+            background-color: orange; /* Slight purple hover effect */
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Information Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Capital</th>
+                <th>Population (Millions)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>United States</td>
+                <td>Washington, D.C.</td>
+                <td>340.1</td>
+            </tr>
+            <tr>
+                <td>Japan</td>
+                <td>Tokyo</td>
+                <td>124.5</td>
+            </tr>
+            <tr>
+                <td>Germany</td>
+                <td>Berlin</td>
+                <td>83.28</td>
+            </tr>
+            <tr>
+                <td>India</td>
+                <td>New Delhi</td>
+                <td>1,438</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
