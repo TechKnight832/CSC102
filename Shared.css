@@ -1,0 +1,32 @@
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+header {
+    background-color: #ffffff;
+    color: black; 
+    padding: 15px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 10px;
+}
+
+nav ul li {
+    display: block;
+    margin: 15px auto;
+    width: 220px; 
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    padding: 12px;
+    border-radius: 5px;
+    display: block;
+}
